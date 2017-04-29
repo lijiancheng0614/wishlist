@@ -41,12 +41,12 @@ $( document ).ready(function() {
 		FB.Event.subscribe('auth.statusChange', function(response) {
 			//Log.info('Status Change Event', response);
 			if (response.status === 'connected') {
-				if (window.location.pathname != '/wishlist.html') {
+				if (window.location.pathname == '/') {
 					window.location.pathname = '/wishlist.html'
 				}
 				showAccountInfo();
 			} else {
-				if (window.location.pathname != '/') {
+				if (window.location.pathname == '/wishlist.html') {
 					window.location.pathname = '/'
 				}
 				//document.getElementById('loginBtn').style.display = 'block';
@@ -57,12 +57,12 @@ $( document ).ready(function() {
 		FB.getLoginStatus(function(response) {
 			//Log.info('Login Status', response);
 			if (response.status === 'connected') {
-				if (window.location.pathname != '/wishlist.html') {
+				if (window.location.pathname == '/') {
 					window.location.pathname = '/wishlist.html'
 				}
 				showAccountInfo();
 			} else {
-				if (window.location.pathname != '/') {
+				if (window.location.pathname == '/wishlist.html') {
 					window.location.pathname = '/'
 				}
 				console.log(window.location.pathname)
