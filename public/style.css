@@ -194,8 +194,8 @@ a {
 
 
 
-nav ul{height:800px; width:18%;}
-nav ul{overflow:hidden; overflow-y:scroll;}
+#wishlist > nav ul{height:800px; width:18%;}
+#wishlist > nav ul{overflow:hidden; overflow-y:scroll;}
 
 #wishlist > nav > ul {
 	width: 100%;
@@ -274,6 +274,8 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 	margin-right: 10px;
 	margin-top: 5px;
 }
+<<<<<<< HEAD
+=======
 
 #navButtons {
 	float: right;

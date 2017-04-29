@@ -14,10 +14,12 @@
 	<body style="font-family: 'Roboto', sans-serif">
         <nav class="navbar navbar-default" style="margin-bottom: 0px; border: 0px; border-radius: 0px; background-color: #3B5998">
             <div class="container" style="margin-bottom: 0px; padding-top: 10px; padding-bottom: 10px">
-                <div id="navButtons">
-            		<div class="fb-login-button" id="loginBtn" data-max-rows="1" data-size="medium"  data-auto-logout-link="true"></div>
-                    <button class="btn btn-default" type="button" onclick="updateWishList(parentObj, '')" id="friendsWishList">Friends' wish list</button>
-                    <button class="btn btn-default" type="button" onclick="updateWishList(parentObj, facebook_id)" id="myWishList">My wish list</button>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+            		<li class="fb-login-button" id="loginBtn" data-max-rows="1" data-size="medium"  data-auto-logout-link="true"></li>
+                    <li onclick="updateWishList(parentObj, '')" id="friendsWishList"><a href="">Friends' wish list</a></li>
+                    <li onclick="updateWishList(parentObj, facebook_id)" id="myWishList"><a href="">My wish list</a></li>
+                    </ul>
                 </div>
         		<div id="accountInfo" style="color: #ffffff"></div>
             </div>
