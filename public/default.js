@@ -83,13 +83,14 @@ $( document ).ready(function() {
 
 	// Connect to firebase db
 	var config = {
-	    apiKey: "AIzaSyCUZgDenZkkAz8mQsTT35C0eaF9g4zW3aI",
-	    authDomain: "coaching-1150a.firebaseapp.com",
-	    databaseURL: "https://coaching-1150a.firebaseio.com",
-	    storageBucket: "coaching-1150a.appspot.com",
-	    messagingSenderId: "691242712846"
-    }
-    firebase.initializeApp(config)
+		apiKey: "AIzaSyCidyScU0JPxzkRABwMf7L7SNjxNqz2NXo",
+		authDomain: "wishlist-70b60.firebaseapp.com",
+		databaseURL: "https://wishlist-70b60.firebaseio.com",
+		projectId: "wishlist-70b60",
+		storageBucket: "wishlist-70b60.appspot.com",
+		messagingSenderId: "460744046950"
+	};
+	firebase.initializeApp(config);
 
 
 	// media query event handler
@@ -98,6 +99,12 @@ $( document ).ready(function() {
 		mq.addListener(WidthChange);
 		WidthChange(mq);
 	}
+
+	firebase.database().ref().on("value", function(snapshot) {
+		console.log(snapshot.val());
+	}, function (errorObject) {
+		console.log("The read failed: " + errorObject.code);
+	});
 })
 
 // Fill map
