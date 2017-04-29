@@ -225,9 +225,10 @@ function updateWishList(items) {
 		Object.keys(items).forEach(function(key) {
 			if (items[key].facebook_id == facebook_id) {
 				s += '<li>';
-				s += '<img src="' + items[key].img + '">';
-				s += '<a href="' + items[key].item_url + '">' + items[key].product_name + '</a>';
-				s += ' ' + items[key].price;
+				// <div style="display: inline-block">
+				s += '<div><img src="' + items[key].img + '"></div>';
+				s += '<div style="margin: 0 20px auto"><h2><a href="' + items[key].item_url + '">' + items[key].product_name + '</a></h2>';
+				s += ' ' + items[key].price + '</div>';
 				s += '</li>';
 			}
 		})
