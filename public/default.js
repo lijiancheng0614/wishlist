@@ -78,12 +78,6 @@ $( document ).ready(function() {
 			document.getElementById('loginBtn').style.display = 'block';
 		}
 
-		document.getElementById('friendsWishList').onclick = function() {
-			FB.api('/me/friends', function(response) {
-				console.log(response);
-			});
-		}
-
 		function clearAll() {
 			document.getElementById('accountInfo').innerHTML = '';
 
@@ -239,9 +233,19 @@ function updateWishList(items, facebook_id) {
 		var userWishListId = null;
 		var userPictureUrl = '';
 		Object.keys(items).forEach(function(key) {
-			if (items[key].facebook_id != null && items[key].facebook_id.includes(facebook_id)) {
+			if (facebook_id == '') {
+				userWishListId = 'Friends\'';
+				s += '<li>';
+				// <div style="display: inline-block">
+				s += '<div><img src="' + items[key].img + '"></div>';
+				s += '<div style="margin: 0 20px auto"><h2><a href="' + items[key].item_url + '">' + items[key].product_name + '</a></h2>';
+				s += items[key].price + '<br>';
+				s += '<img src="' + items[key].facebook_picture_url + '"> ' + items[key].facebook_id + '</div>';
+				s += '</li>';
+			}
+			else if (items[key].facebook_id != null && items[key].facebook_id.includes(facebook_id)) {
 				userWishListId = items[key].facebook_id;
-				userPictureUrl = items[key].facebook_picture_url;
+				userPictureUrl = items[key].facebook_picture_url + '\'s';
 				s += '<li>';
 				// <div style="display: inline-block">
 				s += '<div><img src="' + items[key].img + '"></div>';
@@ -251,7 +255,7 @@ function updateWishList(items, facebook_id) {
 			}
 		})
 		wishlist.innerHTML = (
-			'<h1><img src="' + userPictureUrl + '"> ' + userWishListId + '\'s wish list' + '</h1>' +
+			'<h1><img src="' + userPictureUrl + '"> ' + userWishListId + ' wish list' + '</h1>' +
 			'<br>' +
 			'<nav>' +
 			'	<ul>' +
