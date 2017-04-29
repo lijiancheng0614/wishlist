@@ -248,3 +248,7 @@ nav ul{overflow:hidden; overflow-y:scroll;}
     font-family: "Lato",helvetica,sans-serif;
     font-size: 40px;
 }
+
+input[type=button] {
+    height: 60px;
+}
