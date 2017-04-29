@@ -256,3 +256,7 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 #wish {
 	display: none;
 }
+
+input[type=button] {
+    height: 60px;
+}
