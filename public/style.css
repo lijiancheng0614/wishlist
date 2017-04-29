@@ -232,4 +232,10 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 
 .fb-login-button {
 	float: right;
+	margin-top: 12px;
+	margin-right: 15px;
+}
+
+#accountInfo {
+	margin-left: 15px;
 }
