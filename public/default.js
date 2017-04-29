@@ -257,8 +257,14 @@ function updateWishList(items, facebook_id) {
 }
 
 function getItems () {
-	document.getElementById('search').style.display = 'block';
-	document.getElementById('wish').style.display = 'block';
+	var search = document.getElementById('search');
+	if (search != null) {
+		search.style.display = 'block';
+	}
+	var wish = document.getElementById('wish');
+	if (wish != null) {
+		wish.style.display = 'block';
+	}
 	firebase.database().ref().on("value", function(snapshot) {
 		//console.log(snapshot.val());
 		parentObj = snapshot.val();
