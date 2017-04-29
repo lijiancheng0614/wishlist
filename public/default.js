@@ -68,7 +68,7 @@ $( document ).ready(function() {
 					item_detail.innerHTML = (
 						'<div><img src="' + img + '"></div>' +
 						'<div style="margin: 0 20px auto"><h2><a href="' + item_url + '">' + product_name + '</a></h2>' +
-						price +
+						price + '<br>' +
 						'<button class="btn btn-default" type="button" onclick="add_item(facebook_id, product_name, item_url, price, img)">Add to wish list</button>' +
 						'</div>'
 					);
