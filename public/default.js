@@ -29,9 +29,29 @@ $( document ).ready(function() {
 
 		function showAccountInfo() {
 			FB.api('/me?fields=name,picture', function(response) {
-			  //Log.info('API response', response);
-			  document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + response.name);
-			  document.getElementById('wishlist').childNodes[1].textContent = response.name + '\'s wish list';
+				//Log.info('API response', response);
+				document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + response.name);
+				document.getElementById('wishlist').innerHTML = (
+					'<h1>' + response.name + '\'s wish list' + '</h1>' +
+					'<br>' +
+					'<nav>' +
+					'	<ul>' +
+					'	  <li>Link 1</li>' +
+					'	  <li>Link 2</li>' +
+					'	  <li>Link 3</li>' +
+					'	  <li>Link 4</li>' +
+					'	  <li>Link 5</li>' +
+					'	  <li>Link 6</li>' +
+					'	  <li>Link 7</li>' +
+					'	  <li>Link 8</li>' +
+					'	  <li>Link 9</li>' +
+					'	  <li>Link 10</li>' +
+					'	  <li>Link 11</li>' +
+					'	  <li>Link 13</li>' +
+					'	  <li>Link 13</li>' +
+					'  </ul>' +
+					'</nav>'
+				);
 			});
 			document.getElementById('loginBtn').style.display = 'block';
 		}
