@@ -62,14 +62,15 @@ $( document ).ready(function() {
 			FB.api('/me?fields=name,picture', function(response) {
 				//Log.info('API response', response);
 				facebook_id = response.name;
-				document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + facebook_id);
+				facebook_picture_url = response.picture.data.url;
+				document.getElementById('accountInfo').innerHTML = ('<img src="' + facebook_picture_url + '"> ' + facebook_id);
 				getItems();
 				if (item_detail != null) {
 					item_detail.innerHTML = (
 						'<div><img src="' + img + '"></div>' +
 						'<div style="margin: 0 20px auto"><h2><a href="' + item_url + '">' + product_name + '</a></h2>' +
 						price + '<br><br>' +
-						'<button class="btn btn-success" type="button" onclick="add_item(facebook_id, product_name, item_url, price, img)">Add to wish list</button>' +
+						'<button class="btn btn-success" type="button" onclick="add_item(facebook_id, facebook_picture_url, product_name, item_url, price, img)">Add to wish list</button>' +
 						'</div>'
 					);
 				}
@@ -205,9 +206,10 @@ function contactDown() {
 	}, 1000)
 }
 
-function add_item(facebook_id, product_name, item_url, price, img) {
+function add_item(facebook_id, facebook_picture_url, product_name, item_url, price, img) {
 	firebase.database().ref().push().set({
 		facebook_id: facebook_id,
+		facebook_picture_url: facebook_picture_url,
 		product_name: product_name,
 		item_url: item_url,
 		price: price,
@@ -230,6 +232,7 @@ function updateWishList(items, facebook_id) {
 		Object.keys(items).forEach(function(key) {
 			if (items[key].facebook_id != null && items[key].facebook_id.includes(facebook_id)) {
 				userWishListId = items[key].facebook_id;
+				userPictureUrl = items[key].facebook_picture_url;
 				s += '<li>';
 				// <div style="display: inline-block">
 				s += '<div><img src="' + items[key].img + '"></div>';
@@ -239,7 +242,7 @@ function updateWishList(items, facebook_id) {
 			}
 		})
 		wishlist.innerHTML = (
-			'<h1>' + userWishListId + '\'s wish list' + '</h1>' +
+			'<h1><img src="' + userPictureUrl + '"> ' + userWishListId + '\'s wish list' + '</h1>' +
 			'<br>' +
 			'<nav>' +
 			'	<ul>' +
