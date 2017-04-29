@@ -280,16 +280,21 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 }
 
 .section-one {
-	color:	#525c66;
-	height: 350px;
-	margin-left: 10%;
-	margin-top: 10%;
-	background-image: url(http://i.imgur.com/d8rvSU3.png);
+	color: white;
+	height: 550px;
+	/*margin-left: 10%;
+	margin-top: 10%;*/
+	margin: auto
+	margin-top: 10px;
+	bottom: 0px;
+	left: 0px;
+	background-image: url("http://i.imgur.com/F9ka4M2.png");
+	color: white;
 }
 
 .section-two {
 	color:	black;
-	height: 350px;
+	height: 750px;
 	margin-left: 10%;
 	margin-top: 10%;
 	background-color: white;
@@ -303,3 +308,4 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 	height: 100px;
 	width:100px	;
 }
+
