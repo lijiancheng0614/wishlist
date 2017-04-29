@@ -80,12 +80,15 @@ $( document ).ready(function() {
 
 		function clearAll() {
 			document.getElementById('accountInfo').innerHTML = '';
+
 			if (wishlist != null) {
 				wishlist.innerHTML = '';
 			}
 			if (item_detail != null) {
 				item_detail.innerHTML = '';
 			}
+			document.getElementById('search').style.display = 'none';
+			document.getElementById('wish').style.display = 'none';
 		}
 	};
 

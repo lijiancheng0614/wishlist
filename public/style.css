@@ -247,6 +247,11 @@ nav ul{overflow:hidden; overflow-y:scroll;}
     border: 3;
     font-family: "Lato",helvetica,sans-serif;
     font-size: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#wishlist {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #search {
