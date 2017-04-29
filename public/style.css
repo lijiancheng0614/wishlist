@@ -194,7 +194,7 @@ a {
 
 
 
-nav ul{height:200px; width:18%;}
+nav ul{height:800px; width:18%;}
 nav ul{overflow:hidden; overflow-y:scroll;}
 
 #wishlist > nav > ul {
@@ -218,11 +218,19 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 	display: inline-block;
 }
 
+#item_detail > div {
+	display: inline-block;
+}
+
+#item_detail > div > img {
+
+}
+
 .container {
 	margin-bottom: 60px;
 }
 
 .fb-login-button {
 	float: right;
-	
+	margin-top: 12px;
 }
