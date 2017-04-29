@@ -241,7 +241,7 @@ function updateWishList(items) {
 		Object.keys(items).forEach(function(key) {
 			if (items[key].facebook_id == facebook_id) {
 				s += '<li>';
-				s += '<img src="' + items[key].img '">';
+				s += '<img src="' + items[key].img + '">';
 				s += '<a href="' + items[key].item_url + '">' + items[key].product_name + '</a>';
 				s += ' ' + items[key].price;
 				s += '</li>';
