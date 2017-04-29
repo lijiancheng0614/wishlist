@@ -100,10 +100,6 @@ $( document ).ready(function() {
 			document.getElementById('loginBtn').style.display = 'block';
 		}
 
-		function add_item(facebook_id, product_name, item_url, price, img) {
-
-		}
-
 		function clearAll() {
 			document.getElementById('accountInfo').innerHTML = '';
 			if (wishlist != null) {
@@ -114,8 +110,6 @@ $( document ).ready(function() {
 			}
 		}
 	};
-
-
 
 		(function(d, s, id){
 		var js, fjs = d.getElementsByTagName(s)[0];
@@ -223,7 +217,6 @@ function sendMail() {
 }
 
 function writeUserData(name, email, phone, enquiry, message) {
-	console.log(name+email+phone+message)
 	firebase.database().ref().push().set({
 		name: name,
 		email: email,
@@ -231,40 +224,8 @@ function writeUserData(name, email, phone, enquiry, message) {
 		enquiry: enquiry,
 		message: message
 	})
-	$('#sent').append("<div class='alert alert-success alert-dismissable' \
-		role='alert' id='appended'><a href='#' class='close' data-dismiss='alert' \
-		aria-label='close'>&times;</a>Successfully sent!</div>")
-	$('html,body').scrollTop(0)
-
-	// Reset form values
-	document.getElementById('name').value = ''
-	document.getElementById('invalidName').innerHTML = ''
-	document.getElementById('email').value = ''
-	document.getElementById('invalidEmail').innerHTML = ''
-	document.getElementById('phone').value = ''
-	document.getElementById('invalidNumber').innerHTML = ''
-	document.getElementById('enquiry').value = 'None'
-	document.getElementById('invalidEnquiry').innerHTML = ''
-	document.getElementById('message').value = ''
-	document.getElementById('invalidMessage').innerHTML = ''
-
-	// Dismiss successful submission notification
-	setTimeout(function() {
-		//do something special
-		$('#appended').fadeOut(500)
-		setTimeout(function() {
-			$('#appended').remove()
-		}, 500)
-	}, 4000)
 }
-/*
-$(window).scroll(function () {
-	if ($('#hero-title').offset().top - $(document).scrollTop() > 50) {
-		$('hero-title').addClass("animated fadeIn")
-	}
-	$('godown').addClass("animated slideInUp")
-})
-*/
+
 function findOutMore() {
 	$("#about-btn").click(function() {
 		$('html, body').animate({
@@ -287,6 +248,14 @@ function contactDown() {
 	}, 1000)
 }
 
-
+function add_item(facebook_id, product_name, item_url, price, img) {
+		firebase.database().ref().push().set({
+			facebook_id: facebook_id,
+			product_name: product_name,
+			item_url: item_url,
+			price: price,
+			img: img
+		})
+	}
 
 
