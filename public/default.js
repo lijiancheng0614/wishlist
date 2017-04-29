@@ -78,6 +78,12 @@ $( document ).ready(function() {
 			document.getElementById('loginBtn').style.display = 'block';
 		}
 
+		document.getElementById('friendsWishList').onclick = function() {
+			FB.api('/me/friends', function(response) {
+				console.log(response);
+			});
+		}
+
 		function clearAll() {
 			document.getElementById('accountInfo').innerHTML = '';
 
@@ -280,12 +286,4 @@ function getSearchValue () {
 	console.log(username);
 	document.getElementById('searchName').value = '';
 	updateWishList(parentObj, username);
-}
-
-function getFriendsValue() {
-	document.getElementById('apiResponse').onclick = function() {
-		FB.api('/me/friends', function(response) {
-			console.log(response);
-		});
-	}
 }
