@@ -262,8 +262,11 @@ nav ul{overflow:hidden; overflow-y:scroll;}
     color: #FFFFFF !important;
     border-radius: 3px;
     margin-top: 10px;
+    display: block;
 }
 
-.input-group-btn {
-	display: block;
+#searchButton {
+	font-size: 30px;
+	height: 60px;
+	width: 60px;
 }
