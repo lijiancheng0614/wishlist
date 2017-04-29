@@ -213,6 +213,7 @@ function add_item(facebook_id, product_name, item_url, price, img) {
 		price: price,
 		img: img
 	})
+	window.close();
 }
 
 function updateWishList(items, facebook_id) {
