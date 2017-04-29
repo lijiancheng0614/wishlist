@@ -277,3 +277,7 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 	color: #FFFFFF !important;
 	background-color: #3B5998;
 }
+
+#navButtons {
+	float: right;
+}
