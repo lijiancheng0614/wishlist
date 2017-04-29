@@ -22,76 +22,7 @@
         		<div id="accountInfo" style="color: #ffffff"></div>
             </div>
         </nav>
-        <div class="row">
-            <div class="col-md-1 col-sm-1"></div>
-            <div class="col-md-10 col-sm-10">
-                <div class="container" id="search" style="margin-bottom: 0px; padding-top: 10px; padding-bottom: 10px">
-                    <div class="col-lg-6" style="padding-left: 0px">
-                        <input type="text" class="form-control" placeholder="Who are you buying for?" id="searchName">
-                        <button class="btn btn-default" id="searchButton" type="button" onclick="getSearchValue()"><i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div style="background-color: #e9ebee" id="wish">
-    		<div class="container" id="wishlist" style="padding-top: 0px; background-color: #e9ebee">
-    		</div>
-        </div>
 
-
-
-		<div id="contact-div">
-			<div class="col-xs-12" id="map"></div>
-            <div class="col-xs-6 col-xs-offset-6" id="contactFormContainer">
-            <form class="contactForm">
-                <h1>Contact Us</h1>
-                <br>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 controls">
-                                <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
-                                <p id="invalidName" class="required"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 controls">
-                                <input type="email" class="form-control" placeholder="Email Address" id="email">
-                                <p id="invalidEmail" class="required"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row control-group">
-                    <div class="form-group col-xs-12  controls">
-                        <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
-                        <p id="invalidNumber" class="required"></p>
-                    </div>
-                </div>
-                <div class="row control-group">
-                    <div class="form-group col-xs-12  controls">
-                        <select class="form-control placeholder" id="enquiry" required data-validation-required-message="Please choose an enquiry type.">
-                            <option value="None" selected disabled>Please select enquiry</option>
-                            <option value="General Enquiry">General enquiry</option>
-                            <option value="Free Lesson">Free lesson</option>
-                            <option value="Feedback">Feedback</option>
-                        </select>
-                        <p id="invalidEnquiry" class="required"></p>
-                    </div>
-                </div>
-                <div class="row control-group">
-                    <div class="form-group col-xs-12  controls">
-                        <textarea rows="5" class="form-control" placeholder="Message" id="message"></textarea>
-                        <p id="invalidMessage" class="required"></p>
-                    </div>
-                </div>
-            </form>
-            <button class="btn btn-white btn-lg" onclick="sendMail()" id="submitBtn">Submit</button>
-            </div>
-	    </div>
 
 		<footer class="footer">
 	        <p class="text-muted">&copy WishList 2017</p>

@@ -271,11 +271,15 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 #myWishList {
 	color: #FFFFFF !important;
 	background-color: #3B5998;
+	margin-right: 10px;
+	margin-top: 5px;
 }
 
 #friendsWishList {
 	color: #FFFFFF !important;
 	background-color: #3B5998;
+	margin-right: 10px;
+	margin-top: 5px;
 }
 
 #navButtons {

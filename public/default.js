@@ -51,6 +51,7 @@ $( document ).ready(function() {
 		FB.getLoginStatus(function(response) {
 			//Log.info('Login Status', response);
 			if (response.status === 'connected') {
+				window.location.pathname = '/wishlist.html'
 				showAccountInfo();
 			} else {
 				document.getElementById('loginBtn').style.display = 'block';
