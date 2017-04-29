@@ -274,3 +274,34 @@ a {
 	margin-right: 10px;
 	margin-top: 5px;
 }
+<<<<<<< HEAD
+=======
+
+#navButtons {
+	float: right;
+}
+
+.section-one {
+	color:	#525c66;
+	height: 350px;
+	margin-left: 10%;
+	margin-top: 10%;
+	background-image: url(http://i.imgur.com/d8rvSU3.png);
+}
+
+.section-two {
+	color:	black;
+	height: 350px;
+	margin-left: 10%;
+	margin-top: 10%;
+	background-color: white;
+}
+
+.col-md-4 {
+	color: #a8a8a8;
+}
+
+.icon {
+	height: 100px;
+	width:100px	;
+}
