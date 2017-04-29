@@ -41,21 +41,26 @@ $( document ).ready(function() {
 		FB.Event.subscribe('auth.statusChange', function(response) {
 			//Log.info('Status Change Event', response);
 			if (response.status === 'connected') {
+				if (window.location.pathname != '/wishlist.html') {
+					window.location.pathname = '/wishlist.html'
+				}
 				showAccountInfo();
 			} else {
-				document.getElementById('loginBtn').style.display = 'block';
-				clearAll();
+				//document.getElementById('loginBtn').style.display = 'block';
+				//clearAll();
 			}
 		});
 
 		FB.getLoginStatus(function(response) {
 			//Log.info('Login Status', response);
 			if (response.status === 'connected') {
-				//window.location.pathname = '/wishlist.html'
+				if (window.location.pathname != '/wishlist.html') {
+					window.location.pathname = '/wishlist.html'
+				}
 				showAccountInfo();
 			} else {
-				document.getElementById('loginBtn').style.display = 'block';
-				clearAll();
+				//document.getElementById('loginBtn').style.display = 'block';
+				//clearAll();
 			}
 		});
 
@@ -78,7 +83,7 @@ $( document ).ready(function() {
 			});
 			document.getElementById('loginBtn').style.display = 'block';
 		}
-
+		/*
 		function clearAll() {
 			document.getElementById('accountInfo').innerHTML = '';
 
@@ -91,6 +96,7 @@ $( document ).ready(function() {
 			document.getElementById('search').style.display = 'none';
 			document.getElementById('wish').style.display = 'none';
 		}
+		*/
 	};
 
 		(function(d, s, id){
@@ -121,63 +127,6 @@ $( document ).ready(function() {
 	}
 })
 
-// Fill map
-function WidthChange(mq) {
-	if (mq.matches) {
-		console.log('1')
-		var map = new GMaps({
-			div: '#map',
-			lat: -33.8701004,
-			lng: 151.2082666,
-			zoom: 11
-		})
-		map.addMarker({
-			lat: -33.8701004,
-			lng: 151.2082666
-		})
-	} else {
-		console.log('2')
-		var map = new GMaps({
-			div: '#map',
-			lat: -33.8701004,
-			lng: 151.3582666,
-			zoom: 11
-		})
-		map.addMarker({
-			lat: -33.8701004,
-			lng: 151.2082666
-		})
-	}
-}
-
-function sendMail() {
-	var name = document.getElementById('name').value
-	var email = document.getElementById('email').value
-	var phone = document.getElementById('phone').value
-	var enquiry = document.getElementById('enquiry').value
-	var message = document.getElementById('message').value
-
-	if (name == '') {
-		document.getElementById('invalidName').innerHTML = "Name required"
-	} 
-	if (email == '') {
-		document.getElementById('invalidEmail').innerHTML = "Email required"
-	}
-	if (phone == '') {
-		document.getElementById('invalidNumber').innerHTML = "Phone number required"
-	}
-	if (enquiry == 'None') {
-		document.getElementById('invalidEnquiry').innerHTML = "Subject required"
-	}
-	if (message == '') {
-		document.getElementById('invalidMessage').innerHTML = "Message required"
-	}
-
-	if (name != '' && email != '' && phone != '' && enquiry != 'None' && message != '') {
-		writeUserData(name, email, phone, enquiry, message)
-	}
-}
-
 function writeUserData(name, email, phone, enquiry, message) {
 	firebase.database().ref().push().set({
 		name: name,
@@ -186,28 +135,6 @@ function writeUserData(name, email, phone, enquiry, message) {
 		enquiry: enquiry,
 		message: message
 	})
-}
-
-function findOutMore() {
-	$("#about-btn").click(function() {
-		$('html, body').animate({
-			scrollTop: $("#about").offset().top
-		}, 1500)
-	})
-}
-
-function contactUs() {
-	$("#contact-btn").click(function() {
-		$('html, body').animate({
-			scrollTop: $("#contact-div").offset().top
-		}, 2000)
-	});
-}
-
-function contactDown() {
-	$('html, body').animate({
-		scrollTop: $("#contact-div").offset().top
-	}, 1000)
 }
 
 function add_item(facebook_id, facebook_picture_url, product_name, item_url, price, img) {
@@ -270,6 +197,7 @@ function updateWishList(items, query_facebook_id) {
 }
 
 function getItems () {
+	/*
 	var search = document.getElementById('search');
 	if (search != null) {
 		search.style.display = 'block';
@@ -278,6 +206,7 @@ function getItems () {
 	if (wish != null) {
 		wish.style.display = 'block';
 	}
+	*/
 	firebase.database().ref().on("value", function(snapshot) {
 		//console.log(snapshot.val());
 		parentObj = snapshot.val();
