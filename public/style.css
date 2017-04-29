@@ -199,11 +199,12 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 
 #wishlist > nav > ul {
 	width: 100%;
+	background-color: #DCDCDC;
 }
 
 #wishlist > nav > ul > li {
 	list-style-type: none;
 	height: 30px;
 	margin-top: 20px;
-	border-bottom: solid #333333;
+	border-bottom: solid #aaaaaa;
 }
