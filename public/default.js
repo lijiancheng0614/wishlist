@@ -101,6 +101,7 @@ $( document ).ready(function() {
 	}
 
 	firebase.database().ref().on("value", function(snapshot) {
+		updateWishList(snapshot.val());
 		console.log(snapshot.val());
 	}, function (errorObject) {
 		console.log("The read failed: " + errorObject.code);

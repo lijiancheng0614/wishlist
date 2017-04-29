@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<html manifest="app_cache.appcache">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Get better at dating with us">
+    <title>Add to my facebook wish list</title>
+    <link rel="icon" type="image/png" href="./favicon-32x32.jpg" sizes="32x32">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body style="font-family: 'Roboto', sans-serif">
+    <div class="fb-login-button" id="loginBtn" data-max-rows="1" data-size="medium"  data-auto-logout-link="true"></div>
+    <div id="accountInfo" style="padding-top: 20px">You haven't logged in yet.</div>
+    <div class="container" id="item_detail">
+    </dir>
+
+    <footer class="footer">
+        <p class="text-muted">&copy WishList 2017</p>
+    </footer>
+
+    <!-- Load less critical CSS files -->
+    <link rel="stylesheet" href="./bootstrap.css">
+
+    <!-- Load javascript files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        var QueryString = function () {
+          // This function is anonymous, is executed immediately and 
+          // the return value is assigned to QueryString!
+          var query_string = {};
+          var query = window.location.search.substring(1);
+          var vars = query.split("&");
+          for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+                // If first entry with this name
+            if (typeof query_string[pair[0]] === "undefined") {
+              query_string[pair[0]] = decodeURIComponent(pair[1]);
+                // If second entry with this name
+            } else if (typeof query_string[pair[0]] === "string") {
+              var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+              query_string[pair[0]] = arr;
+                // If third or later entry with this name
+            } else {
+              query_string[pair[0]].push(decodeURIComponent(pair[1]));
+            }
+          } 
+          return query_string;
+        }();
+        window.fbAsyncInit = function() {
+            FB.init({
+            appId      : '407125566336031',
+            xfbml      : true,
+            version    : 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+
+            FB.Event.subscribe('auth.statusChange', function(response) {
+                //Log.info('Status Change Event', response);
+                if (response.status === 'connected') {
+                    showAccountInfo();
+                } else {
+                    document.getElementById('loginBtn').style.display = 'block';
+                    clearAll();
+                }
+            });
+
+            FB.getLoginStatus(function(response) {
+                //Log.info('Login Status', response);
+                if (response.status === 'connected') {
+                    showAccountInfo();
+                } else {
+                    document.getElementById('loginBtn').style.display = 'block';
+                    clearAll();
+                }
+            });
+
+            function showAccountInfo() {
+                FB.api('/me?fields=name,picture', function(response) {
+                    //Log.info('API response', response);
+                    document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + response.name);
+                    var product_name = QueryString.product_name;
+                    var item_url = QueryString.url;
+                    var price = QueryString.price;
+                    var img = QueryString.img;
+                    document.getElementById('item_detail').innerHTML = ('facebook_id: ' + '' + response.name +
+                        '<br>' +
+                        'product_name: ' + product_name +
+                        '<br>' +
+                        'url: ' + item_url +
+                        '<br>' + 
+                        'price: ' + price +
+                        '<img src="' + img + '">');
+                });
+                document.getElementById('loginBtn').style.display = 'block';
+            }
+
+            function clearAll() {
+                document.getElementById('accountInfo').innerHTML = '';
+                document.getElementById('wishlist').innerHTML = '';
+            }
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyCfDa2odqDNj9xdjAx88wyA5Y3OsQAB5_c"></script>
+    <script src="gmaps.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
