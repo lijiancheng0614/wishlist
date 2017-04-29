@@ -13,6 +13,7 @@ $( document ).ready(function() {
 		  showAccountInfo();
 		} else {
 		  document.getElementById('loginBtn').style.display = 'block';
+		  document.getElementById('accountInfo').innerHTML = '';
 		}
 		});
 
@@ -22,6 +23,7 @@ $( document ).ready(function() {
 		  showAccountInfo();
 		} else {
 		  document.getElementById('loginBtn').style.display = 'block';
+		  document.getElementById('accountInfo').innerHTML = '';
 		}
 		});
 
