@@ -1,28 +1,34 @@
+var QueryString = function () {
+  // This function is anonymous, is executed immediately and 
+  // the return value is assigned to QueryString!
+  var query_string = {};
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+	var pair = vars[i].split("=");
+		// If first entry with this name
+	if (typeof query_string[pair[0]] === "undefined") {
+	  query_string[pair[0]] = decodeURIComponent(pair[1]);
+		// If second entry with this name
+	} else if (typeof query_string[pair[0]] === "string") {
+	  var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+	  query_string[pair[0]] = arr;
+		// If third or later entry with this name
+	} else {
+	  query_string[pair[0]].push(decodeURIComponent(pair[1]));
+	}
+  } 
+  return query_string;
+}();
+var facebook_id = '';
+var product_name = QueryString.product_name;
+var item_url = QueryString.url;
+var price = QueryString.price;
+var img = QueryString.img;
+var wishlist = document.getElementById('wishlist');
+var item_detail = document.getElementById('item_detail');
+
 $( document ).ready(function() {
-	var QueryString = function () {
-	  // This function is anonymous, is executed immediately and 
-	  // the return value is assigned to QueryString!
-	  var query_string = {};
-	  var query = window.location.search.substring(1);
-	  var vars = query.split("&");
-	  for (var i=0;i<vars.length;i++) {
-		var pair = vars[i].split("=");
-			// If first entry with this name
-		if (typeof query_string[pair[0]] === "undefined") {
-		  query_string[pair[0]] = decodeURIComponent(pair[1]);
-			// If second entry with this name
-		} else if (typeof query_string[pair[0]] === "string") {
-		  var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
-		  query_string[pair[0]] = arr;
-			// If third or later entry with this name
-		} else {
-		  query_string[pair[0]].push(decodeURIComponent(pair[1]));
-		}
-	  } 
-	  return query_string;
-	}();
-	var wishlist = document.getElementById('wishlist');
-	var item_detail = document.getElementById('item_detail');
 	window.fbAsyncInit = function() {
 		FB.init({
 		appId      : '407125566336031',
@@ -54,10 +60,11 @@ $( document ).ready(function() {
 		function showAccountInfo() {
 			FB.api('/me?fields=name,picture', function(response) {
 				//Log.info('API response', response);
-				document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + response.name);
+				facebook_id = response.name;
+				document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + facebook_id);
 				if (wishlist != null) {
 					wishlist.innerHTML = (
-						'<h1>' + response.name + '\'s wish list' + '</h1>' +
+						'<h1>' + facebook_id + '\'s wish list' + '</h1>' +
 						'<br>' +
 						'<nav>' +
 						'	<ul>' +
@@ -78,11 +85,6 @@ $( document ).ready(function() {
 						'</nav>'
 					);
 				}
-				var facebook_id = response.name;
-				var product_name = QueryString.product_name;
-				var item_url = QueryString.url;
-				var price = QueryString.price;
-				var img = QueryString.img;
 				if (item_detail != null) {
 					item_detail.innerHTML = ('facebook_id: ' + '' + facebook_id +
 						'<br>' +
