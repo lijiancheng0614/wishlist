@@ -213,7 +213,13 @@ function add_item(facebook_id, product_name, item_url, price, img) {
 		price: price,
 		img: img
 	})
-	window.close();
+	document.getElementById('alert').innerHTML = 'Add successfully!';
+    document.getElementById('alert').setAttribute('class', 'alert alert-success alert-dismissible');
+    window.setTimeout(function() {
+        $(".alert").fadeTo(1000, 0).slideUp(1000, function(){
+            $(this).alert('close');
+        });
+    }, 1000);
 }
 
 function updateWishList(items, facebook_id) {
