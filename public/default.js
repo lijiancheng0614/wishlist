@@ -160,16 +160,17 @@ function updateWishList(items, query_facebook_id) {
 		var s = '';
 		var userWishListId = null;
 		var userPictureUrl = '';
+		if (query_facebook_id == '')
+			userWishListId = 'Friends\'';
 		Object.keys(items).forEach(function(key) {
 			if (query_facebook_id == '') {
 				if (items[key].facebook_id != null && !items[key].facebook_id.includes(facebook_id)) {
-					userWishListId = 'Friends\'';
 					s += '<li>';
 					// <div style="display: inline-block">
 					s += '<div><img src="' + items[key].img + '"></div>';
 					s += '<div style="margin: 0 20px auto"><h2><a href="' + items[key].item_url + '">' + items[key].product_name + '</a></h2>';
 					s += items[key].price + '<br>';
-					s += '<img src="' + items[key].facebook_picture_url + '"> ' + items[key].facebook_id + '</div>';
+					s += '<img style="width: 32px" src="' + items[key].facebook_picture_url + '"> ' + items[key].facebook_id + '</div>';
 					s += '</li>';
 				}
 			}
