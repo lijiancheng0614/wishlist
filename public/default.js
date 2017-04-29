@@ -227,13 +227,15 @@ function add_item(facebook_id, facebook_picture_url, product_name, item_url, pri
     }, 1000);
 }
 
-function updateWishList(items, facebook_id) {
+function updateWishList(items, query_facebook_id) {
 	if (wishlist != null) {
 		var s = '';
 		var userWishListId = null;
 		var userPictureUrl = '';
 		Object.keys(items).forEach(function(key) {
-			if (facebook_id == '') {
+			if (query_facebook_id == '') {
+				if (items[key].facebook_id != null && items[key].facebook_id.includes(facebook_id))
+					continue;
 				userWishListId = 'Friends\'';
 				s += '<li>';
 				// <div style="display: inline-block">
@@ -243,7 +245,7 @@ function updateWishList(items, facebook_id) {
 				s += '<img src="' + items[key].facebook_picture_url + '"> ' + items[key].facebook_id + '</div>';
 				s += '</li>';
 			}
-			else if (items[key].facebook_id != null && items[key].facebook_id.includes(facebook_id)) {
+			else if (items[key].facebook_id != null && items[key].facebook_id.includes(query_facebook_id)) {
 				userWishListId = items[key].facebook_id;
 				userPictureUrl = items[key].facebook_picture_url + '\'s';
 				s += '<li>';
