@@ -225,7 +225,6 @@ function add_item(facebook_id, facebook_picture_url, product_name, item_url, pri
 }
 
 function updateWishList(items, facebook_id) {
-	console.log("test")
 	if (wishlist != null) {
 		var s = '';
 		var userWishListId = null;
@@ -255,6 +254,8 @@ function updateWishList(items, facebook_id) {
 }
 
 function getItems () {
+	document.getElementById('search').style.display = 'block';
+	document.getElementById('wish').style.display = 'block';
 	firebase.database().ref().on("value", function(snapshot) {
 		//console.log(snapshot.val());
 		parentObj = snapshot.val();
