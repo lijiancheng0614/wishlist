@@ -8,32 +8,37 @@ $( document ).ready(function() {
 		FB.AppEvents.logPageView();
 
 		FB.Event.subscribe('auth.statusChange', function(response) {
-		//Log.info('Status Change Event', response);
-		if (response.status === 'connected') {
-		  showAccountInfo();
-		} else {
-		  document.getElementById('loginBtn').style.display = 'block';
-		  document.getElementById('accountInfo').innerHTML = '';
-		}
+			//Log.info('Status Change Event', response);
+			if (response.status === 'connected') {
+				showAccountInfo();
+			} else {
+				document.getElementById('loginBtn').style.display = 'block';
+				clearAll();
+			}
 		});
 
 		FB.getLoginStatus(function(response) {
-		//Log.info('Login Status', response);
-		if (response.status === 'connected') {
-		  showAccountInfo();
-		} else {
-		  document.getElementById('loginBtn').style.display = 'block';
-		  document.getElementById('accountInfo').innerHTML = '';
-		}
+			//Log.info('Login Status', response);
+			if (response.status === 'connected') {
+				showAccountInfo();
+			} else {
+				document.getElementById('loginBtn').style.display = 'block';
+				clearAll();
+			}
 		});
 
 		function showAccountInfo() {
 			FB.api('/me?fields=name,picture', function(response) {
 			  //Log.info('API response', response);
 			  document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + response.name);
+			  document.getElementById('wishlist').childNodes[1].textContent = response.name + '\'s wish list';
 			});
 			document.getElementById('loginBtn').style.display = 'block';
-			document.getElementById('wishlist').childNodes[1].textContent = response.name + '\'s wish list';
+		}
+
+		function clearAll() {
+			document.getElementById('accountInfo').innerHTML = '';
+			document.getElementById('wishlist').innerHTML = '';
 		}
 	};
 
