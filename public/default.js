@@ -281,3 +281,11 @@ function getSearchValue () {
 	document.getElementById('searchName').value = '';
 	updateWishList(parentObj, username);
 }
+
+function getFriendsValue() {
+	document.getElementById('apiResponse').onclick = function() {
+		FB.api('/me/friends', function(response) {
+			console.log(response);
+		});
+	}
+}
