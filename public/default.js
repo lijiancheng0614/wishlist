@@ -186,8 +186,8 @@ function updateWishList(items, query_facebook_id) {
 			}
 			else if (items[key].facebook_id != null && 
 				items[key].facebook_id.toLowerCase().includes(query_facebook_id.toLowerCase())) {
-				userWishListId = items[key].facebook_id;
-				userPictureUrl = items[key].facebook_picture_url + '\'s';
+				userWishListId = items[key].facebook_id + '\'s';
+				userPictureUrl = items[key].facebook_picture_url;
 				s += '<li>';
 				// <div style="display: inline-block">
 				s += '<div><img src="' + items[key].img + '"></div>';
