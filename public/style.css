@@ -249,6 +249,7 @@ nav ul{overflow:hidden; overflow-y:scroll;}
     font-size: 40px;
 }
 
-input[type=button] {
+.btn {
     height: 60px;
+    background-color: #4D90FE;
 }
