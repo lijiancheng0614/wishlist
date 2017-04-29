@@ -229,6 +229,7 @@ function updateWishList(items, facebook_id) {
 	if (wishlist != null) {
 		var s = '';
 		var userWishListId = null;
+		var userPictureUrl = '';
 		Object.keys(items).forEach(function(key) {
 			if (items[key].facebook_id != null && items[key].facebook_id.includes(facebook_id)) {
 				userWishListId = items[key].facebook_id;
