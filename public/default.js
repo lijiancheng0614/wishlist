@@ -62,6 +62,7 @@ $( document ).ready(function() {
 				//Log.info('API response', response);
 				facebook_id = response.name;
 				document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + facebook_id);
+				getItems();
 				if (item_detail != null) {
 					item_detail.innerHTML = ('facebook_id: ' + '' + facebook_id +
 						'<br>' +
@@ -116,15 +117,6 @@ $( document ).ready(function() {
 		mq.addListener(WidthChange);
 		WidthChange(mq);
 	}
-
-	firebase.database().ref().on("value", function(snapshot) {
-		//console.log(snapshot.val());
-		var parentObj = snapshot.val();
-		updateWishList(parentObj);
-		console.log(snapshot.val());
-	}, function (errorObject) {
-		console.log("The read failed: " + errorObject.code);
-	});
 })
 
 // Fill map
@@ -227,6 +219,7 @@ function add_item(facebook_id, product_name, item_url, price, img) {
 }
 
 function updateWishList(items) {
+	console.log("test")
 	if (wishlist != null) {
 		var s = '';
 		Object.keys(items).forEach(function(key) {
@@ -248,4 +241,15 @@ function updateWishList(items) {
 			'</nav>'
 		);
 	}	
+}
+
+function getItems () {
+	firebase.database().ref().on("value", function(snapshot) {
+		//console.log(snapshot.val());
+		var parentObj = snapshot.val();
+		updateWishList(parentObj);
+		console.log(snapshot.val());
+	}, function (errorObject) {
+		console.log("The read failed: " + errorObject.code);
+	});
 }
