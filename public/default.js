@@ -101,7 +101,11 @@ $( document ).ready(function() {
 	}
 
 	firebase.database().ref().on("value", function(snapshot) {
-		console.log(snapshot.val());
+		//console.log(snapshot.val());
+		var parentObj = snapshot.val();
+		Object.keys(parentObj).forEach(function(key) {
+			console.log(parentObj[key].email)
+		})
 	}, function (errorObject) {
 		console.log("The read failed: " + errorObject.code);
 	});
