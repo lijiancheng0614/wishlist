@@ -112,6 +112,7 @@
 .container {
 	padding-top: 30px;
 	padding-bottom:3%;
+	background-color: #1c56fb
 }
 
 p {
@@ -238,4 +239,13 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 
 #accountInfo {
 	margin-left: 15px;
+}
+
+#searchName {
+	height: 60px;
+    margin: 10px 20px;
+    width: 1050px;
+    border: none;
+    font-family: "Lato",helvetica,sans-serif;
+    font-size: 40px;
 }
