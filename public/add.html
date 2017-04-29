@@ -6,15 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>Add to my facebook wish list</title>
+    <title>Wish List</title>
     <link rel="icon" type="image/png" href="./favicon-32x32.jpg" sizes="32x32">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body style="font-family: 'Roboto', sans-serif">
-    <div class="fb-login-button" id="loginBtn" data-max-rows="1" data-size="medium"  data-auto-logout-link="true"></div>
-    <div id="accountInfo" style="padding-top: 20px">You haven't logged in yet.</div>
+    <nav class="navbar navbar-default">
+        <div class="fb-login-button" id="loginBtn" data-max-rows="1" data-size="medium"  data-auto-logout-link="true"></div>
+        <div id="accountInfo"></div>
+    </nav>
+    <div class="container">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search Wishlist" id="searchName">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" onclick="getSearchValue()">Go!</button>
+                </span>
+            </div>
+        </div>
+    </div>
+
     <div class="container" id="item_detail">
-    </dir>
+    </div>
 
     <footer class="footer">
         <p class="text-muted">&copy WishList 2017</p>
