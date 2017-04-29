@@ -200,6 +200,7 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 #wishlist > nav > ul {
 	width: 100%;
 	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #wishlist > nav > ul > li {
@@ -243,15 +244,8 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 #searchName {
 	height: 60px;
     margin: 10px 20px;
-    width: 1050px;
-    border: 3;
     font-family: "Lato",helvetica,sans-serif;
     font-size: 40px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-#wishlist {
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #search {
@@ -264,5 +258,12 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 
 .btn {
     height: 60px;
-    background-color: #4D90FE;
+    background-color: #4D90FE !important;
+    color: #FFFFFF !important;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.input-group-btn {
+	display: block;
 }
