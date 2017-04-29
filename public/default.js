@@ -1,4 +1,28 @@
 $( document ).ready(function() {
+	var QueryString = function () {
+	  // This function is anonymous, is executed immediately and 
+	  // the return value is assigned to QueryString!
+	  var query_string = {};
+	  var query = window.location.search.substring(1);
+	  var vars = query.split("&");
+	  for (var i=0;i<vars.length;i++) {
+		var pair = vars[i].split("=");
+			// If first entry with this name
+		if (typeof query_string[pair[0]] === "undefined") {
+		  query_string[pair[0]] = decodeURIComponent(pair[1]);
+			// If second entry with this name
+		} else if (typeof query_string[pair[0]] === "string") {
+		  var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+		  query_string[pair[0]] = arr;
+			// If third or later entry with this name
+		} else {
+		  query_string[pair[0]].push(decodeURIComponent(pair[1]));
+		}
+	  } 
+	  return query_string;
+	}();
+	var wishlist = document.getElementById('wishlist');
+	var item_detail = document.getElementById('item_detail');
 	window.fbAsyncInit = function() {
 		FB.init({
 		appId      : '407125566336031',
@@ -31,34 +55,63 @@ $( document ).ready(function() {
 			FB.api('/me?fields=name,picture', function(response) {
 				//Log.info('API response', response);
 				document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + response.name);
-				document.getElementById('wishlist').innerHTML = (
-					'<h1>' + response.name + '\'s wish list' + '</h1>' +
-					'<br>' +
-					'<nav>' +
-					'	<ul>' +
-					'	  <li>Link 1</li>' +
-					'	  <li>Link 2</li>' +
-					'	  <li>Link 3</li>' +
-					'	  <li>Link 4</li>' +
-					'	  <li>Link 5</li>' +
-					'	  <li>Link 6</li>' +
-					'	  <li>Link 7</li>' +
-					'	  <li>Link 8</li>' +
-					'	  <li>Link 9</li>' +
-					'	  <li>Link 10</li>' +
-					'	  <li>Link 11</li>' +
-					'	  <li>Link 13</li>' +
-					'	  <li>Link 13</li>' +
-					'  </ul>' +
-					'</nav>'
-				);
+				if (wishlist != null) {
+					wishlist.innerHTML = (
+						'<h1>' + response.name + '\'s wish list' + '</h1>' +
+						'<br>' +
+						'<nav>' +
+						'	<ul>' +
+						'	  <li>Link 1</li>' +
+						'	  <li>Link 2</li>' +
+						'	  <li>Link 3</li>' +
+						'	  <li>Link 4</li>' +
+						'	  <li>Link 5</li>' +
+						'	  <li>Link 6</li>' +
+						'	  <li>Link 7</li>' +
+						'	  <li>Link 8</li>' +
+						'	  <li>Link 9</li>' +
+						'	  <li>Link 10</li>' +
+						'	  <li>Link 11</li>' +
+						'	  <li>Link 13</li>' +
+						'	  <li>Link 13</li>' +
+						'  </ul>' +
+						'</nav>'
+					);
+				}
+				var facebook_id = response.name;
+				var product_name = QueryString.product_name;
+				var item_url = QueryString.url;
+				var price = QueryString.price;
+				var img = QueryString.img;
+				if (item_detail != null) {
+					item_detail.innerHTML = ('facebook_id: ' + '' + facebook_id +
+						'<br>' +
+						'product_name: ' + product_name +
+						'<br>' +
+						'url: ' + item_url +
+						'<br>' + 
+						'price: ' + price +
+						'<img src="' + img + '">' + 
+						'<br>' +
+						'<button onclick="add_item(facebook_id, product_name, item_url, price, img)">Add to wish list</button>'
+					);
+				}
 			});
 			document.getElementById('loginBtn').style.display = 'block';
 		}
 
+		function add_item(facebook_id, product_name, item_url, price, img) {
+
+		}
+
 		function clearAll() {
 			document.getElementById('accountInfo').innerHTML = '';
-			document.getElementById('wishlist').innerHTML = '';
+			if (wishlist != null) {
+				wishlist.innerHTML = '';
+			}
+			if (item_detail != null) {
+				item_detail.innerHTML = '';
+			}
 		}
 	};
 
@@ -170,14 +223,14 @@ function sendMail() {
 }
 
 function writeUserData(name, email, phone, enquiry, message) {
-    console.log(name+email+phone+message)
-    firebase.database().ref().push().set({
-	    name: name,
-	    email: email,
-	    phone: phone,
-	    enquiry: enquiry,
-	    message: message
-    })
+	console.log(name+email+phone+message)
+	firebase.database().ref().push().set({
+		name: name,
+		email: email,
+		phone: phone,
+		enquiry: enquiry,
+		message: message
+	})
 	$('#sent').append("<div class='alert alert-success alert-dismissable' \
 		role='alert' id='appended'><a href='#' class='close' data-dismiss='alert' \
 		aria-label='close'>&times;</a>Successfully sent!</div>")
@@ -213,25 +266,25 @@ $(window).scroll(function () {
 })
 */
 function findOutMore() {
-    $("#about-btn").click(function() {
-        $('html, body').animate({
-            scrollTop: $("#about").offset().top
-        }, 1500)
-    })
+	$("#about-btn").click(function() {
+		$('html, body').animate({
+			scrollTop: $("#about").offset().top
+		}, 1500)
+	})
 }
 
 function contactUs() {
-    $("#contact-btn").click(function() {
-        $('html, body').animate({
-            scrollTop: $("#contact-div").offset().top
-        }, 2000)
-    });
+	$("#contact-btn").click(function() {
+		$('html, body').animate({
+			scrollTop: $("#contact-div").offset().top
+		}, 2000)
+	});
 }
 
 function contactDown() {
 	$('html, body').animate({
-        scrollTop: $("#contact-div").offset().top
-    }, 1000)
+		scrollTop: $("#contact-div").offset().top
+	}, 1000)
 }
 
 
