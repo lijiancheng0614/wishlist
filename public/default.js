@@ -76,7 +76,7 @@ $( document ).ready(function() {
 				if (item_detail != null) {
 					item_detail.innerHTML = (
 						'<div class="row"><div class="col-md-2 col-sm-2"><img class="thumbnail" src="' + img + '"></div>' +
-						'<div class="col-md-10 col-sm-10" style="margin: 0 20px auto"><h2><a href="' + item_url + '">' + product_name + '</a></h2>' +
+						'<div class="col-md-10 col-sm-10"><h2><a href="' + item_url + '">' + product_name + '</a></h2>' +
 						price + '<br><br>' +
 						'<button class="btn btn-success" type="button" onclick="add_item(facebook_id, facebook_picture_url, product_name, item_url, price, img)">Add to wish list</button>' +
 						'</div></div>'
