@@ -46,6 +46,9 @@ $( document ).ready(function() {
 				}
 				showAccountInfo();
 			} else {
+				if (window.location.pathname != '/') {
+					window.location.pathname = '/'
+				}
 				//document.getElementById('loginBtn').style.display = 'block';
 				//clearAll();
 			}
@@ -59,6 +62,10 @@ $( document ).ready(function() {
 				}
 				showAccountInfo();
 			} else {
+				if (window.location.pathname != '/') {
+					window.location.pathname = '/'
+				}
+				console.log(window.location.pathname)
 				//document.getElementById('loginBtn').style.display = 'block';
 				//clearAll();
 			}
@@ -163,8 +170,11 @@ function updateWishList(items, query_facebook_id) {
 		if (query_facebook_id == '')
 			userWishListId = 'Friends\'';
 		Object.keys(items).forEach(function(key) {
+			//var databaseId = items[key].facebook_id.toLowerCase();
+			//var searchId = facebook_id.toLowerCase();
 			if (query_facebook_id == '') {
-				if (items[key].facebook_id != null && !items[key].facebook_id.includes(facebook_id)) {
+				if (items[key].facebook_id != null && 
+					!items[key].facebook_id.toLowerCase().includes(facebook_id.toLowerCase())) {
 					s += '<li>';
 					// <div style="display: inline-block">
 					s += '<div><img src="' + items[key].img + '"></div>';
@@ -174,7 +184,8 @@ function updateWishList(items, query_facebook_id) {
 					s += '</li>';
 				}
 			}
-			else if (items[key].facebook_id != null && items[key].facebook_id.includes(query_facebook_id)) {
+			else if (items[key].facebook_id != null && 
+				items[key].facebook_id.toLowerCase().includes(query_facebook_id.toLowerCase())) {
 				userWishListId = items[key].facebook_id;
 				userPictureUrl = items[key].facebook_picture_url + '\'s';
 				s += '<li>';
