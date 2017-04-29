@@ -1,0 +1,198 @@
+@media only screen and (min-width: 992px) {
+
+	#about {
+		padding-left: 10%;
+		padding-right: 10%;
+	}
+}
+
+
+@media only screen and (max-width: 850px) {
+	
+	#mem1 {
+		width: 100%;
+	}
+
+	#mem2 {
+		width: 100%;
+		margin-top: 20px;
+	}
+
+	#mem3 {
+		width: 100%;
+		margin-top: 20px;
+	}
+
+	#mem4 {
+		width: 100%;
+		margin-top: 20px;
+	}
+
+	#serv1 {
+		width: 100%;
+	}
+	
+	#serv2 {
+		width: 100%;
+		margin-top: 20px;
+	}
+
+	#map {
+		height: 220px;
+		position: relative;
+		padding-left: 0px;
+	}
+
+	#contactFormContainer {
+		opacity: 1;
+		background-color: #edede5;
+		margin-left: 0;
+		width: 100%;
+		height: auto !important;
+	}
+
+	#contact-div {
+		height: 690px !important;
+	}
+}
+
+@media only screen and (min-width: 851px) {
+	#map {
+		height: 480px;
+		position: absolute !important;
+		padding-left: 0px;
+	}
+}
+
+#hero-div {
+	position: relative; 
+	left: 0%; 
+	width: 100%; 
+	overflow: hidden;
+}
+
+#hero-img {
+	position: absolute; 
+	width:100%; 
+	z-index: -1;
+}
+
+#hero-title {
+	position: relative; 
+	text-align: center; 
+	font-size: 4em; 
+	margin-top:15%; 
+	color: #ffffff;
+}
+
+#sent {
+	position: absolute;
+	width: 100%;
+}
+
+#godown {
+	margin-bottom: 10%;
+	text-align: center;
+}
+
+#about-btn {
+	position: relative; 
+	height: 50px; 
+	display: inline-block; 
+	border-radius: 20px;
+}
+
+#contact-btn {
+	position: relative; 
+	height: 50px; 
+	display: inline-block; 
+	border-radius: 20px;
+}
+
+.container {
+	padding-top: 30px;
+	padding-bottom:3%;
+}
+
+p {
+	font-size: 20px;
+}
+
+h1 {
+	text-align: center;
+}
+
+.center-img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 50%;
+}
+
+.center-text {
+	text-align: center;
+}
+
+.service-img {
+	height: 100px; 
+	display: block; 
+	margin-left: auto; 
+	margin-right: auto;
+}
+
+#contact-div {
+	background-color: #edede5; 
+	margin-right: 0px;
+	height: 480px;
+	position: relative;
+}
+
+.contactForm {
+	text-align:center; 
+}
+
+.required {
+	color: #ff0000;
+	font-size: 15px;
+	margin-bottom: 0px;
+	text-align: left;
+}
+
+#submitBtn {
+	float:right; 
+	margin-bottom:10px;
+	background-color: #ebb129;
+	color: #ffffff;
+}
+
+#team {
+	background-color: #edede5;
+}
+
+.footer {
+	background-color:#2f2f2f;
+}
+
+.text-muted {
+	text-align:center; 
+	padding-top:20px; 
+	padding-bottom:20px; 
+	margin-bottom:0px; 
+	color:#ffffff !important;
+	font-size: 15px;
+}
+
+a {
+	color: #333333 !important;
+}
+
+#contactFormContainer {
+	background-color: #ffffff;
+	opacity: 0.9;
+	height: 100%;
+}
+
+
+
+nav ul{height:200px; width:18%;}
+nav ul{overflow:hidden; overflow-y:scroll;}
