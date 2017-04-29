@@ -106,6 +106,7 @@ $( document ).ready(function() {
 		Object.keys(parentObj).forEach(function(key) {
 			console.log(parentObj[key].email)
 		})
+		console.log(snapshot.val());
 	}, function (errorObject) {
 		console.log("The read failed: " + errorObject.code);
 	});
