@@ -21,6 +21,7 @@ var QueryString = function () {
   return query_string;
 }();
 var facebook_id = '';
+var parentObj = null;
 var product_name = QueryString.product_name;
 var item_url = QueryString.url;
 var price = QueryString.price;
@@ -218,12 +219,14 @@ function add_item(facebook_id, product_name, item_url, price, img) {
 	})
 }
 
-function updateWishList(items) {
+function updateWishList(items, facebook_id) {
 	console.log("test")
 	if (wishlist != null) {
 		var s = '';
+		var userWishListId = null;
 		Object.keys(items).forEach(function(key) {
-			if (items[key].facebook_id == facebook_id) {
+			if (items[key].facebook_id.includes(facebook_id)) {
+				userWishListId = items[key].facebook_id;
 				s += '<li>';
 				// <div style="display: inline-block">
 				s += '<div><img src="' + items[key].img + '"></div>';
@@ -233,7 +236,7 @@ function updateWishList(items) {
 			}
 		})
 		wishlist.innerHTML = (
-			'<h1>' + facebook_id + '\'s wish list' + '</h1>' +
+			'<h1>' + userWishListId + '\'s wish list' + '</h1>' +
 			'<br>' +
 			'<nav>' +
 			'	<ul>' +
@@ -247,10 +250,17 @@ function updateWishList(items) {
 function getItems () {
 	firebase.database().ref().on("value", function(snapshot) {
 		//console.log(snapshot.val());
-		var parentObj = snapshot.val();
-		updateWishList(parentObj);
+		parentObj = snapshot.val();
+		updateWishList(parentObj, facebook_id);
 		console.log(snapshot.val());
 	}, function (errorObject) {
 		console.log("The read failed: " + errorObject.code);
 	});
+}
+
+function getSearchValue () {
+	var username = document.getElementById('searchName').value;
+	console.log(username);
+	document.getElementById('searchName').value = '';
+	updateWishList(parentObj, username);
 }
