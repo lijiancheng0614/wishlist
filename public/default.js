@@ -28,13 +28,14 @@ $( document ).ready(function() {
 		});
 
 		function showAccountInfo() {
-		FB.api('/me?fields=name,picture', function(response) {
-		  //Log.info('API response', response);
-		  document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + response.name);
-		});
-		document.getElementById('loginBtn').style.display = 'block';
+			FB.api('/me?fields=name,picture', function(response) {
+			  //Log.info('API response', response);
+			  document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + response.name);
+			});
+			document.getElementById('loginBtn').style.display = 'block';
+			document.getElementById('wishlist').childNodes[1].textContent = response.name + '\'s wish list';
 		}
-		};
+	};
 
 
 
