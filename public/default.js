@@ -148,7 +148,7 @@ function updateWishList(items, query_facebook_id) {
 					!items[key].facebook_id.toLowerCase().includes(facebook_id.toLowerCase())) {
 					s += '<li>';
 					s += '<div class="row"><div class="col-md-2 col-sm-2"><img class="thumbnail" src="' + items[key].img + '"></div>';
-					s += '<div class="col-md-10 col-sm-10" style="margin: 0 20px auto"><h2><a href="' + items[key].item_url + '">' + items[key].product_name + '</a></h2>';
+					s += '<div class="col-md-10 col-sm-10"><h2><a href="' + items[key].item_url + '">' + items[key].product_name + '</a></h2>';
 					s += items[key].price + '<br>';
 					s += '<img style="width: 32px; height: 32px" src="' + items[key].facebook_picture_url + '"> ' + items[key].facebook_id + '</div></div>';
 					s += '</li>';
@@ -160,7 +160,7 @@ function updateWishList(items, query_facebook_id) {
 				userPictureUrl = items[key].facebook_picture_url;
 				s += '<li>';
 				s += '<div class="row"><div class="col-md-2 col-sm-2"><img class="thumbnail" src="' + items[key].img + '"></div>';
-				s += '<div class="col-md-10 col-sm-10" style="margin: 0 20px auto"><h2><a href="' + items[key].item_url + '">' + items[key].product_name + '</a></h2>';
+				s += '<div class="col-md-10 col-sm-10"><h2><a href="' + items[key].item_url + '">' + items[key].product_name + '</a></h2>';
 				s += items[key].price + '</div></div>';
 				s += '</li>';
 			}
