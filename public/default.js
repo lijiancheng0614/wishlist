@@ -65,15 +65,10 @@ $( document ).ready(function() {
 				document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + facebook_id);
 				getItems();
 				if (item_detail != null) {
-					item_detail.innerHTML = ('facebook_id: ' + '' + facebook_id +
-						'<br>' +
-						'product_name: ' + product_name +
-						'<br>' +
-						'url: ' + item_url +
-						'<br>' + 
-						'price: ' + price +
-						'<img src="' + img + '">' + 
-						'<br>' +
+					item_detail.innerHTML = (
+						'<div><img src="' + img + '"></div>' +
+						'<div style="margin: 0 20px auto"><h2><a href="' + item_url + '">' + product_name + '</a></h2>' +
+						price + '</div>' +
 						'<button onclick="add_item(facebook_id, product_name, item_url, price, img)">Add to wish list</button>'
 					);
 				}
@@ -231,7 +226,7 @@ function updateWishList(items, facebook_id) {
 				// <div style="display: inline-block">
 				s += '<div><img src="' + items[key].img + '"></div>';
 				s += '<div style="margin: 0 20px auto"><h2><a href="' + items[key].item_url + '">' + items[key].product_name + '</a></h2>';
-				s += ' ' + items[key].price + '</div>';
+				s += items[key].price + '</div>';
 				s += '</li>';
 			}
 		})
