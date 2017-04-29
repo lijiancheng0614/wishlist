@@ -62,29 +62,6 @@ $( document ).ready(function() {
 				//Log.info('API response', response);
 				facebook_id = response.name;
 				document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + facebook_id);
-				if (wishlist != null) {
-					wishlist.innerHTML = (
-						'<h1>' + facebook_id + '\'s wish list' + '</h1>' +
-						'<br>' +
-						'<nav>' +
-						'	<ul>' +
-						'	  <li>Link 1</li>' +
-						'	  <li>Link 2</li>' +
-						'	  <li>Link 3</li>' +
-						'	  <li>Link 4</li>' +
-						'	  <li>Link 5</li>' +
-						'	  <li>Link 6</li>' +
-						'	  <li>Link 7</li>' +
-						'	  <li>Link 8</li>' +
-						'	  <li>Link 9</li>' +
-						'	  <li>Link 10</li>' +
-						'	  <li>Link 11</li>' +
-						'	  <li>Link 13</li>' +
-						'	  <li>Link 13</li>' +
-						'  </ul>' +
-						'</nav>'
-					);
-				}
 				if (item_detail != null) {
 					item_detail.innerHTML = ('facebook_id: ' + '' + facebook_id +
 						'<br>' +
@@ -152,9 +129,7 @@ $( document ).ready(function() {
 	firebase.database().ref().on("value", function(snapshot) {
 		//console.log(snapshot.val());
 		var parentObj = snapshot.val();
-		Object.keys(parentObj).forEach(function(key) {
-			console.log(parentObj[key].email)
-		})
+		updateWishList(parentObj);
 		console.log(snapshot.val());
 	}, function (errorObject) {
 		console.log("The read failed: " + errorObject.code);
@@ -251,13 +226,33 @@ function contactDown() {
 }
 
 function add_item(facebook_id, product_name, item_url, price, img) {
-		firebase.database().ref().push().set({
-			facebook_id: facebook_id,
-			product_name: product_name,
-			item_url: item_url,
-			price: price,
-			img: img
+	firebase.database().ref().push().set({
+		facebook_id: facebook_id,
+		product_name: product_name,
+		item_url: item_url,
+		price: price,
+		img: img
+	})
+}
+
+function updateWishList(items) {
+	if (wishlist != null) {
+		var s = '';
+		Object.keys(items).forEach(function(key) {
+			s += '<li>';
+			s += '<img src="' + items[key].img '">';
+			s += '<a href="' + items[key].item_url + '">' + items[key].product_name + '</a>';
+			s += ' ' + items[key].price;
+			s += '</li>';
 		})
-	}
-
-
+		wishlist.innerHTML = (
+			'<h1>' + facebook_id + '\'s wish list' + '</h1>' +
+			'<br>' +
+			'<nav>' +
+			'	<ul>' +
+			s +
+			'  </ul>' +
+			'</nav>'
+		);
+	}	
+}
