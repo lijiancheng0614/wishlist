@@ -211,19 +211,7 @@ a {
 	border-bottom: solid #aaaaaa;
 }
 
-#wishlist > nav > ul > li > div > img {
-	height: 140px;
-}
-
-#wishlist > nav > ul > li > div {
-	display: inline-block;
-}
-
-#item_detail > div {
-	display: inline-block;
-}
-
-#item_detail > div > img {
+.thumbnail {
 	height: 140px;
 }
 

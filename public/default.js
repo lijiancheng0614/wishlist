@@ -75,11 +75,11 @@ $( document ).ready(function() {
 				getItems();
 				if (item_detail != null) {
 					item_detail.innerHTML = (
-						'<div><img src="' + img + '"></div>' +
-						'<div style="margin: 0 20px auto"><h2><a href="' + item_url + '">' + product_name + '</a></h2>' +
+						'<div class="row"><div class="col-md-2 col-sm-2"><img class="thumbnail" src="' + img + '"></div>' +
+						'<div class="col-md-10 col-sm-10" style="margin: 0 20px auto"><h2><a href="' + item_url + '">' + product_name + '</a></h2>' +
 						price + '<br><br>' +
 						'<button class="btn btn-success" type="button" onclick="add_item(facebook_id, facebook_picture_url, product_name, item_url, price, img)">Add to wish list</button>' +
-						'</div>'
+						'</div></div>'
 					);
 				}
 			});
@@ -147,10 +147,10 @@ function updateWishList(items, query_facebook_id) {
 				if (items[key].facebook_id != null && 
 					!items[key].facebook_id.toLowerCase().includes(facebook_id.toLowerCase())) {
 					s += '<li>';
-					s += '<div><img src="' + items[key].img + '"></div>';
-					s += '<div style="margin: 0 20px auto"><h2><a href="' + items[key].item_url + '">' + items[key].product_name + '</a></h2>';
+					s += '<div class="row"><div class="col-md-2 col-sm-2"><img class="thumbnail" src="' + items[key].img + '"></div>';
+					s += '<div class="col-md-10 col-sm-10" style="margin: 0 20px auto"><h2><a href="' + items[key].item_url + '">' + items[key].product_name + '</a></h2>';
 					s += items[key].price + '<br>';
-					s += '<img style="width: 32px; height: 32px" src="' + items[key].facebook_picture_url + '"> ' + items[key].facebook_id + '</div>';
+					s += '<img style="width: 32px; height: 32px" src="' + items[key].facebook_picture_url + '"> ' + items[key].facebook_id + '</div></div>';
 					s += '</li>';
 				}
 			}
@@ -159,9 +159,9 @@ function updateWishList(items, query_facebook_id) {
 				userWishListId = items[key].facebook_id + '\'s';
 				userPictureUrl = items[key].facebook_picture_url;
 				s += '<li>';
-				s += '<div><img src="' + items[key].img + '"></div>';
-				s += '<div style="margin: 0 20px auto"><h2><a href="' + items[key].item_url + '">' + items[key].product_name + '</a></h2>';
-				s += items[key].price + '</div>';
+				s += '<div class="row"><div class="col-md-2 col-sm-2"><img class="thumbnail" src="' + items[key].img + '"></div>';
+				s += '<div class="col-md-10 col-sm-10" style="margin: 0 20px auto"><h2><a href="' + items[key].item_url + '">' + items[key].product_name + '</a></h2>';
+				s += items[key].price + '</div></div>';
 				s += '</li>';
 			}
 		})
