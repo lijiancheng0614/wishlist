@@ -223,7 +223,7 @@ nav ul{overflow:hidden; overflow-y:scroll;}
 }
 
 #item_detail > div > img {
-
+	height: 140px;
 }
 
 .container {
