@@ -49,8 +49,6 @@ $( document ).ready(function() {
 				if (window.location.pathname == '/wishlist.html') {
 					window.location.pathname = '/'
 				}
-				//document.getElementById('loginBtn').style.display = 'block';
-				//clearAll();
 			}
 		});
 
@@ -65,9 +63,6 @@ $( document ).ready(function() {
 				if (window.location.pathname == '/wishlist.html') {
 					window.location.pathname = '/'
 				}
-				console.log(window.location.pathname)
-				//document.getElementById('loginBtn').style.display = 'block';
-				//clearAll();
 			}
 		});
 
@@ -90,20 +85,6 @@ $( document ).ready(function() {
 			});
 			document.getElementById('loginBtn').style.display = 'block';
 		}
-		/*
-		function clearAll() {
-			document.getElementById('accountInfo').innerHTML = '';
-
-			if (wishlist != null) {
-				wishlist.innerHTML = '';
-			}
-			if (item_detail != null) {
-				item_detail.innerHTML = '';
-			}
-			document.getElementById('search').style.display = 'none';
-			document.getElementById('wish').style.display = 'none';
-		}
-		*/
 	};
 
 		(function(d, s, id){
@@ -124,14 +105,6 @@ $( document ).ready(function() {
 		messagingSenderId: "460744046950"
 	};
 	firebase.initializeApp(config);
-
-
-	// media query event handler
-	if (matchMedia) {
-		var mq = window.matchMedia("(max-width: 850px)");
-		mq.addListener(WidthChange);
-		WidthChange(mq);
-	}
 })
 
 function writeUserData(name, email, phone, enquiry, message) {
@@ -170,13 +143,10 @@ function updateWishList(items, query_facebook_id) {
 		if (query_facebook_id == '')
 			userWishListId = 'Friends\'';
 		Object.keys(items).forEach(function(key) {
-			//var databaseId = items[key].facebook_id.toLowerCase();
-			//var searchId = facebook_id.toLowerCase();
 			if (query_facebook_id == '') {
 				if (items[key].facebook_id != null && 
 					!items[key].facebook_id.toLowerCase().includes(facebook_id.toLowerCase())) {
 					s += '<li>';
-					// <div style="display: inline-block">
 					s += '<div><img src="' + items[key].img + '"></div>';
 					s += '<div style="margin: 0 20px auto"><h2><a href="' + items[key].item_url + '">' + items[key].product_name + '</a></h2>';
 					s += items[key].price + '<br>';
@@ -189,7 +159,6 @@ function updateWishList(items, query_facebook_id) {
 				userWishListId = items[key].facebook_id + '\'s';
 				userPictureUrl = items[key].facebook_picture_url;
 				s += '<li>';
-				// <div style="display: inline-block">
 				s += '<div><img src="' + items[key].img + '"></div>';
 				s += '<div style="margin: 0 20px auto"><h2><a href="' + items[key].item_url + '">' + items[key].product_name + '</a></h2>';
 				s += items[key].price + '</div>';
@@ -209,18 +178,7 @@ function updateWishList(items, query_facebook_id) {
 }
 
 function getItems () {
-	/*
-	var search = document.getElementById('search');
-	if (search != null) {
-		search.style.display = 'block';
-	}
-	var wish = document.getElementById('wish');
-	if (wish != null) {
-		wish.style.display = 'block';
-	}
-	*/
 	firebase.database().ref().on("value", function(snapshot) {
-		//console.log(snapshot.val());
 		parentObj = snapshot.val();
 		updateWishList(parentObj, facebook_id);
 		console.log(snapshot.val());
