@@ -30,7 +30,7 @@ $( document ).ready(function() {
 		  //Log.info('API response', response);
 		  document.getElementById('accountInfo').innerHTML = ('<img src="' + response.picture.data.url + '"> ' + response.name);
 		});
-		document.getElementById('loginBtn').style.display = 'none';
+		document.getElementById('loginBtn').style.display = 'block';
 		}
 		};
 
