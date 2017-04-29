@@ -239,11 +239,13 @@ function updateWishList(items) {
 	if (wishlist != null) {
 		var s = '';
 		Object.keys(items).forEach(function(key) {
-			s += '<li>';
-			s += '<img src="' + items[key].img '">';
-			s += '<a href="' + items[key].item_url + '">' + items[key].product_name + '</a>';
-			s += ' ' + items[key].price;
-			s += '</li>';
+			if (items[key].facebook_id == facebook_id) {
+				s += '<li>';
+				s += '<img src="' + items[key].img '">';
+				s += '<a href="' + items[key].item_url + '">' + items[key].product_name + '</a>';
+				s += ' ' + items[key].price;
+				s += '</li>';
+			}
 		})
 		wishlist.innerHTML = (
 			'<h1>' + facebook_id + '\'s wish list' + '</h1>' +
